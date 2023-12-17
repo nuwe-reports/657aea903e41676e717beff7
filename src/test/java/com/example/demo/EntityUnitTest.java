@@ -24,24 +24,20 @@ import com.example.demo.entities.*;
 @TestInstance(Lifecycle.PER_CLASS)
 class EntityUnitTest {
 
-	@Autowired
-	private TestEntityManager entityManager;
-
-	private Doctor d1;
-
-	private Patient p1;
-
-    private Room r1;
-
-    private Appointment a1;
-    private Appointment a2;
-    private Appointment a3;
-
-    @Test
-    void this_is_a_test(){
-        // DELETE THIS TEST
-        assertThat(false).isEqualTo(true);
-    }
+	/*
+	 * @Autowired private TestEntityManager entityManager;
+	 * 
+	 * private Doctor d1;
+	 * 
+	 * private Patient p1;
+	 * 
+	 * private Room r1;
+	 * 
+	 * private Appointment a1; private Appointment a2; private Appointment a3;
+	 * 
+	 * @Test void this_is_a_test(){ // DELETE THIS TEST
+	 * assertThat(false).isEqualTo(true); }
+	 */
 
     /** TODO
      * Implement tests for each Entity class: Doctor, Patient, Room and Appointment.

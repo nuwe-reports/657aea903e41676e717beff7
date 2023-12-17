@@ -40,62 +40,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Make sure to be as exhaustive as possible. Coverage is checked ;)
  */
 
-@WebMvcTest(DoctorController.class)
-class DoctorControllerUnitTest{
-
-    @MockBean
-    private DoctorRepository doctorRepository;
-
-    @Autowired 
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Test
-    void this_is_a_test(){
-        // DELETE ME
-        assertThat(true).isEqualTo(false);
-    }
-}
 
 
-@WebMvcTest(PatientController.class)
-class PatientControllerUnitTest{
 
-    @MockBean
-    private PatientRepository patientRepository;
 
-    @Autowired 
-    private MockMvc mockMvc;
 
-    @Autowired
-    private ObjectMapper objectMapper;
 
-    @Test
-    void this_is_a_test(){
-        // DELETE ME
-        assertThat(true).isEqualTo(false);
-    }
-
-}
-
-@WebMvcTest(RoomController.class)
-class RoomControllerUnitTest{
-
-    @MockBean
-    private RoomRepository roomRepository;
-
-    @Autowired 
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Test
-    void this_is_a_test(){
-        // DELETE ME
-        assertThat(true).isEqualTo(false);
-    }
-
-}
