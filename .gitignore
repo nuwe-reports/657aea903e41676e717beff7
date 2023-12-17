@@ -2,3 +2,15 @@ target/*
 target/
 .vscode/*
 .vscode/
+
+# Maven
+/target/
+/.mvn/
+.mvn
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
+/bin/
+*.DS_Store
