@@ -127,7 +127,14 @@ class DoctorControllerUnitTest{
 
         when(doctorRepository.findById(doctor.getId())).thenReturn(opt);
         mockMvc.perform(delete("/api/doctors/" + doctor.getId()))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk());              
+    }
+    
+    @Test
+    void shouldNotDeleteDoctor() throws Exception{
+        long id = 2;
+        mockMvc.perform(delete("/api/doctors/" + id))
+                .andExpect(status().isNotFound());
                 
     }
     
@@ -233,6 +240,14 @@ class PatientControllerUnitTest{
     }
     
     @Test
+    void shouldNotDeletePatient() throws Exception{
+        long id = 2;
+        mockMvc.perform(delete("/api/patients/" + id))
+                .andExpect(status().isNotFound());
+                
+    }
+    
+    @Test
     void shouldDeleteAllPatients() throws Exception{
         mockMvc.perform(delete("/api/patients"))
                 .andExpect(status().isOk());
@@ -306,6 +321,14 @@ class RoomControllerUnitTest{
     }
     
     @Test
+    void shouldNotGetAnyRoomById() throws Exception{
+    	Room room = new Room("Dermatology");
+        mockMvc.perform(get("/api/rooms/" + room))
+                .andExpect(status().isNotFound());
+                
+    }
+    
+    @Test
     void shouldDeleteARoomById() throws Exception{
     	
     	Room room = new Room("Dermatology");
@@ -321,6 +344,14 @@ class RoomControllerUnitTest{
         when(roomRepository.findByRoomName(room.getRoomName())).thenReturn(opt);
         mockMvc.perform(delete("/api/rooms/" + room.getRoomName()))
                 .andExpect(status().isOk());
+                
+    }
+    
+    @Test
+    void shouldNotDeleteRoom() throws Exception{
+        Room room = new Room("Dermatology");
+        mockMvc.perform(delete("/api/rooms/" + room))
+                .andExpect(status().isNotFound());
                 
     }
     
