@@ -3,3 +3,12 @@ target/
 .vscode/*
 .vscode/
 /bin/
+# Maven
+/target/
+/.mvn/
+.mvn
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
