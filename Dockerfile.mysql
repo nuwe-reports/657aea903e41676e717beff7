@@ -5,4 +5,4 @@ ENV MYSQL_ROOT_PASSWORD=root
 ENV MYSQL_ROOT_HOST=172.*.*.*
 ENV MYSQL_ALLOW_EMPTY_PASSWORD=true
 
-COPY src/main/resources/db-scripts/ /docker-entrypoint-initdb.d/
+COPY src/main/resources/db-script/ /docker-entrypoint-initdb.d/
