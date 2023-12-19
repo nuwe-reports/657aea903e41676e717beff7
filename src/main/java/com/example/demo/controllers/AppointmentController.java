@@ -53,9 +53,13 @@ public class AppointmentController {
     @PostMapping("/appointment")
     public ResponseEntity<List<Appointment>> createAppointment(@RequestBody Appointment appointment){
 
-
-		Appointment newAppointment = new Appointment(appointment.getPatient(), appointment.getDoctor(),
-				appointment.getRoom(), appointment.getStartsAt(), appointment.getFinishesAt());
+    	try {
+		Appointment newAppointment = new Appointment(
+				appointment.getPatient(), 
+				appointment.getDoctor(),
+				appointment.getRoom(), 
+				appointment.getStartsAt(), 
+				appointment.getFinishesAt());
 		
 		if(newAppointment.getFinishesAt().isBefore(newAppointment.getStartsAt()) ||
 	            newAppointment.getFinishesAt().isEqual(newAppointment.getStartsAt())) {
@@ -69,7 +73,10 @@ public class AppointmentController {
 		
 		appointmentRepository.save(newAppointment);
 		return new ResponseEntity<>(HttpStatus.OK);
+    	}catch(Exception e) {
+    		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         //return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+    	}
     }
 
 
