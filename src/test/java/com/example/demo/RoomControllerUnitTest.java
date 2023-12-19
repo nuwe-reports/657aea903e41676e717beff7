@@ -42,10 +42,6 @@ class RoomControllerUnitTest{
     @Autowired
     private ObjectMapper objectMapper;
 
-	/*
-	 * @Test void this_is_a_test(){ // DELETE ME assertThat(true).isEqualTo(false);
-	 * }
-	 */
     @Test
     void shouldCreateARoom() throws Exception {
     	Room room = new Room("Dermatology");

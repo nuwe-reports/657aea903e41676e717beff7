@@ -1,0 +1,16 @@
+# Etapa de construcción
+FROM maven:latest AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src src
+RUN mvn test
+RUN mvn clean package
+
+# Etapa de ejecución
+FROM openjdk:8-jre
+
+WORKDIR /app
+COPY --from=build /app/target/accenture-techhub-0.0.1-SNAPSHOT.war api-runner.war
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "api-runner.war"]

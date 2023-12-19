@@ -74,7 +74,7 @@ class AppointmentControllerUnitTest{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
         
         LocalDateTime startsAt= LocalDateTime.parse("19:30 24/04/2023", formatter);
-        LocalDateTime finishesAt = LocalDateTime.parse("19:20 24/04/2023", formatter);
+        LocalDateTime finishesAt = LocalDateTime.parse("19:30 24/04/2023", formatter);
 
         Appointment appointment = new Appointment(patient, doctor, room, startsAt, finishesAt);
         
@@ -103,21 +103,17 @@ class AppointmentControllerUnitTest{
         LocalDateTime finishesAt2 = LocalDateTime.parse("21:20 24/04/2023", formatter);
 
         Appointment appointment = new Appointment(patient, doctor, room, startsAt, finishesAt);
+        Appointment appointment2 = new Appointment(patient2, doctor2, room, startsAt2, finishesAt2);
         
         mockMvc.perform(post("/api/appointment").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(appointment)))
                 .andExpect(status().isCreated());
-        
-        Appointment appointment2 = new Appointment(patient2, doctor2, room, startsAt2, finishesAt2);
         
         List<Appointment> appointments = new ArrayList<Appointment>();
         appointments.add(appointment);
         //appointments.add(appointment2);
 
         when(appointmentRepository.findAll()).thenReturn(appointments);
-        
-
-
         mockMvc.perform(post("/api/appointment").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(appointment2)))
                 .andExpect(status().isBadRequest());
@@ -142,15 +138,12 @@ class AppointmentControllerUnitTest{
         patient2.setId(2);
 
         Appointment appointment = new Appointment(patient, doctor, room, startsAt, finishesAt);
-
+        Appointment appointment2 = new Appointment(patient2, doctor2, room2, startsAt, finishesAt);
 
         mockMvc.perform(post("/api/appointment").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(appointment)))
                 .andExpect(status().isCreated());
                 
-
-        Appointment appointment2 = new Appointment(patient2, doctor2, room2, startsAt, finishesAt);
-
         List<Appointment> appointments = new ArrayList<Appointment>();
         appointments.add(appointment);
         
@@ -158,8 +151,6 @@ class AppointmentControllerUnitTest{
         mockMvc.perform(post("/api/appointment").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(appointment2)))
                 .andExpect(status().isCreated());
-                
-
     }
     
     @Test
